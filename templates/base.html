@@ -1,0 +1,172 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Black &amp; White</title>
+
+    <!-- meta -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- style -->
+    <style>
+		#back-to-top {
+			position: fixed;
+			bottom: 100px;
+			right: 100px;
+		}
+	</style>
+
+    <!-- css -->
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/pace.css" %}">
+    <link rel="stylesheet" href="{% static "css/custom.css" %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <!-- markdown高亮代码 -->
+    <link rel="stylesheet" href="{% static 'css/highlights/github.css' %}">
+
+
+
+    <!-- js -->
+    <script src="{% static "js/jquery.min.js" %}"></script>
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+    <script src="{% static "js/pace.min.js" %}"></script>
+    <script src="{% static "js/modernizr.custom.js" %}"></script>
+    <script src="{% static "js/script.js" %}"></script>
+</head>
+
+<body>
+    <div class="container">
+        <header id="site-header">
+            <div class="row">
+                <div class="col-md-4 col-sm-5 col-xs-8">
+                    <div class="logo">
+                        <h1>
+                            <a href="index.html">
+                                <b>Black</b> &amp; White</a>
+                        </h1>
+                    </div>
+                </div>
+                <!-- col-md-4 -->
+                <div class="col-md-8 col-sm-7 col-xs-4">
+                    <nav class="main-nav" role="navigation">
+                        <div class="navbar-header">
+                            <button type="button" id="trigger-overlay" class="navbar-toggle">
+                                <span class="ion-navicon"></span>
+                            </button>
+                        </div>
+
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="cl-effect-11">
+                                    <a href="{% url "index" %}" data-hover="首页">首页</a>
+                                </li>
+                                <li class="cl-effect-11">
+                                    <a href="{% url "blogs" %}" data-hover="博客">博客</a>
+                                </li>
+                                <li class="cl-effect-11">
+                                    <a href="{% url "contact" %}" data-hover="联系">联系</a>
+                                </li>
+                                <li class="cl-effect-11">
+                                    <a href="{% url "index" %}xadmin/" data-hover="后台">后台</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /.navbar-collapse -->
+                    </nav>
+                    <div id="header-search-box">
+                        <a id="search-menu" href="#">
+                            <i id="search-icon" class="fa fa-search"></i>
+                        </a>
+                        <div id="search-form" class="search-form">
+                            <form role="search" method="get" id="searchform" action="{% url 'blogs' %}">
+                                <input type="search" name="word" placeholder="搜索" required>
+                                <button type="submit"><span class="fa fa-search"></span></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- col-md-8 -->
+            </div>
+        </header>
+    </div>
+
+    {% block content-body %}
+    {% endblock %}
+
+    <footer id="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="copyright">&copy 2018 - 前端模版采集自
+                        <a href="https://github.com/zmrenwu/django-blog-tutorial-templates" target="_blank" title="github地址">github地址</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- 返回顶部 -->
+    <button type="button" id="back-to-top" class="btn btn-default">
+		Top
+    </button>
+
+
+    <script type="text/javascript">
+		$(document).ready(function () {
+			//首先将#back-to-top隐藏
+			$("#back-to-top").hide();
+			//当滚动条的位置处于距顶部100像素以下时，跳转链接出现，否则消失
+			$(function () {
+				$(window).scroll(function () {
+					if ($(window).scrollTop() > 100) {
+						$("#back-to-top").fadeIn(1500);
+					} else {
+						$("#back-to-top").fadeOut(1500);
+					}
+				});
+				//当点击跳转链接后，回到页面顶部位置
+				$("#back-to-top").click(function () {
+					$('body,html').animate({
+						scrollTop: 0
+					}, 666);
+					return false;
+				});
+			});
+		});
+		$("#search-menu").click(function(e){
+            //This stops the page scrolling to the top on a # link.
+            e.preventDefault();
+
+            var val = $('#search-icon');
+            if(val.hasClass('fa-search')){
+                val.addClass('fa-times');
+                val.removeClass('fa-search');
+            }
+            else{
+                 val.removeClass('fa-times');
+                val.addClass('fa-search');
+            }
+
+
+            if (searchvisible ===0) {
+                //Search is currently hidden. Slide down and show it.
+                $("#search-form").slideDown(200);
+                $("#s").focus(); //Set focus on the search input field.
+                searchvisible = 1; //Set search visible flag to visible.
+            }
+
+            else {
+                //Search is currently showing. Slide it back up and hide it.
+                $("#search-form").slideUp(200);
+                searchvisible = 0;
+            }
+        });
+	</script>
+
+</body>
+
+</html>
