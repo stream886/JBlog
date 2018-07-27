@@ -23,19 +23,11 @@ class GlobalSettings(object):
     # def get_site_menu(self):
     #     return [
     #         {
-    #             'title': r"相关站点",
+    #             'title': r"主站",
     #             'menus': (
     #                 {
-    #                     'title': r"PAYs前台",
-    #                     'url': 'http://172.17.180.141:86/'
-    #                 },
-    #                 {
-    #                     'title': r"盘古",
-    #                     'url': 'http://ipangu.baidu.com',
-    #                 },
-    #                 {
-    #                     'title': r"ICEM",
-    #                     'url': 'http://icrm.baidu.com',
+    #                     'title': r"博客首页",
+    #                     'url': '/index',
     #                 },
     #             )
     #         }
@@ -48,7 +40,7 @@ class MainDashboard(object):
     widgets = [
         [
             {"type": "qbutton", "title": "Quick Start",
-             "btns": [{"title": "Awesome", "url": "http://www.fontawesome.com.cn/faicons/"}]},
+             "btns": [{"title": "index", "url": "/index"}]},
         ],
         [
             {"type": "html",

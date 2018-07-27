@@ -3,13 +3,17 @@
 {% load static %}
 {% load blog_tags %}
 
+{% block right %}
+{% endblock %}
+
 
 {% block main %}
-    <main class="col-md-9">
+{#    <main class="col-md-9">#}
+    <main>
         <article class="post post-{{ post.pk }}">
             <header class="entry-header">
-                <h1 class="entry-title">{{ post.title }}</h1>
-                <div class="entry-meta">
+                <h1 class="entry-title-blog">{{ post.title }}</h1>
+                <div class="entry-meta-blog">
                     <span class="post-category">
                         {{ post.category.name }}
                     </span>
@@ -18,6 +22,12 @@
                     </span>
                     <span class="post-author">
                         {{ post.author }}
+                    </span>
+{#                    <span class="comments-link">#}
+{#                        {{ post.comment_set.count }} 评论#}
+{#                    </span>#}
+                    <span class="views-count">
+                        {{ post.views }} 阅读
                     </span>
                 </div>
             </header>
