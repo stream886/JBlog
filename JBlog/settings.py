@@ -130,4 +130,5 @@ STATIC_URL = '/static/'
 STATIC_DIR=os.path.join(BASE_DIR,'static')
 STATICFILES_DIRS=[STATIC_DIR,] # 当由多个静态文件目录时，可不断加入
 
-# STATIC_ROOT 配置部署的时候才用
+# STATIC_ROOT 配置部署的时候才用???
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
