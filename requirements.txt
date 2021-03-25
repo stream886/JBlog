@@ -18,7 +18,7 @@ Pygments==2.2.0
 PyMySQL==0.8.0
 pyodbc==4.0.22
 pytz==2018.3
-PyYAML==3.12
+PyYAML==5.4
 six==1.11.0
 tablib==0.12.1
 unicodecsv==0.14.1
